@@ -1,0 +1,12 @@
+.c-h2 {
+    font-size: 29px;
+    font-weight: bold;
+    margin-bottom: 7px;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+
+body {
+    background-color: rgb(220, 238, 245);
+}

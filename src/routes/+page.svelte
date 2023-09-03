@@ -1,26 +1,30 @@
 <script>
-    import { Tipex } from "@friendofsvelte/tipex";
-    import "@friendofsvelte/tipex/styles/app.css";
-    import "@friendofsvelte/tipex/styles/Tipex.css";
-    import "@friendofsvelte/tipex/styles/ProseMirror.css";
-    import "@friendofsvelte/tipex/styles/Controls.css";
-    import "@friendofsvelte/tipex/styles/EditLink.css";
-    import "@friendofsvelte/tipex/styles/Tipex.css";
+    import {tipexEditor} from '@friendofsvelte/tipex';
 
-    let htmlContent = `
-<p>This <a target="_blank" rel="noopener noreferrer" href="">content</a> is written by
-<a target="_blank" rel="noopener noreferrer" href="http://bishwas.net/">Bishwas</a> in 2023.
-</p>`;
+    import TurndownService from 'turndown';
+    import Markdown from "$lib/Markdown.svelte";
+    import Editor from "$lib/Editor.svelte";
+    const turndownService = new TurndownService();
 
-    let convertedMarkdown = "";
+    let htmlContent = `Paste your <b>HTML</b> content here.`;
+    $: convertedMarkdown = turndownService.turndown($tipexEditor ? $tipexEditor.getHTML() : htmlContent);
 </script>
+
+<svelte:head>
+    <meta name="description" content="HTML to Markdown Converter">
+    <meta name="keywords" content="HTML, Markdown, Converter, Web Tool">
+    <meta name="author" content="Your Name">
+    <meta name="robots" content="index, follow">
+    <meta name="og:title" content="HTML to Markdown Converter">
+    <meta name="og:description" content="Convert HTML to Markdown with this online tool.">
+    <meta name="og:type" content="website">
+    <title>HTML to Markdown Converter</title>
+</svelte:head>
 
 <div class="main-container">
     <div class="editor-wrapper">
-        <Tipex {htmlContent} class="tipex-editor" />
-        <div class="markdown-editor">
-            <textarea value={convertedMarkdown} />
-        </div>
+        <Editor bind:htmlContent/>
+        <Markdown bind:convertedMarkdown/>
     </div>
 </div>
 
@@ -33,24 +37,20 @@
         align-items: center;
         padding: 3rem;
     }
-    
+
     .editor-wrapper {
+        width: 100%;
+        gap: 5rem;
+        flex-direction: column;
         display: flex;
-        gap: 3rem;
-    }
-
-    .editor-wrapper :global(.tipex-editor) {
-        margin-top: 0rem;
-        margin-bottom: 0rem;
-        height: 100%;
+        justify-content: center;
         height: 80vh;
-    }
 
-    .markdown-editor {
-        height: 100%;
-    }
-
-    .markdown-editor textarea {
-        height: 100%;
+        @media screen and (min-width: 780px) {
+            max-width: 90vw;
+            gap: 3rem;
+            flex-direction: row;
+            max-width: 90vw;
+        }
     }
 </style>

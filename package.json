@@ -15,6 +15,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@friendofsvelte/tipex": "^0.0.1-meta.2"
+		"@friendofsvelte/tipex": "^0.0.1-meta.2",
+		"turndown": "^7.1.2"
 	}
 }
