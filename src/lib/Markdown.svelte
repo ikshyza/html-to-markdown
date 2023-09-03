@@ -39,6 +39,7 @@
     .markdown-editor textarea {
         border-radius: 1%;
         height: 100%;
+        min-height: 70vh;
         width: 100%;
         padding: 7px;
         outline: none;

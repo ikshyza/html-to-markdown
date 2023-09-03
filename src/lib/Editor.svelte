@@ -22,8 +22,23 @@
         margin-top: 0rem;
         margin-bottom: 0rem;
         max-height: 75vh;
+        gap: 0px;
         height: 100%;
         width: 100%;
+    }
+
+    .html-editor :global(.tipex-editor .tipex-content-section) {
+        overflow-y: scroll;
+    }
+
+    .html-editor :global(.tipex-editor .tipex-content-section pre) {
+        border-radius: 19px;
+    }
+
+    
+    .html-editor :global(.tipex-editor .tipex-content-section pre code) {
+        background-color: rgba(240, 248, 255, 0.144);
+        color: rgb(255, 255, 255);
     }
 
     .html-editor {
